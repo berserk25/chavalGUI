@@ -61,7 +61,9 @@ class Product(tk.Frame):
 	def add_product(self):
 		self.message['text'] = ''
 		if self.not_null_entry_val():
+
 			sqlite_product.add_product(self.name.get(), self.price.get())
+			
 			self.message['fg'] = 'green'
 			self.message['text'] = 'Product {} added successfully'.format(self.name.get())
 			self.name.delete(0, tk.END)
