@@ -1,30 +1,40 @@
 import tkinter as tk
 import tkinter.ttk
 import sqlite_product
+import resource_finder as resFin
+
+
 class Product(tk.Frame):
+
 
 	def __init__(self, window):
 		super().__init__(window)
+
+		#Create the resource finder
+		resource_file = './res/strings_es.xml'
+		rf = resFin.ResourceFinder(resource_file)
+
 		self.wind = window
-		self.wind.title('Products Application')
+		self.wind.title(rf.findString('products_window_title'))
 
 		#Creating a frame container
-		frame = tk.LabelFrame(self.wind, text = 'Register a new product')
+		frame = tk.LabelFrame(self.wind, text = rf.findString('products_frame_text'))
 		frame.grid(row = 0, column = 0, columnspan = 3, pady = 50, padx = 50)
 		
 		#Name input
-		tk.Label(frame, text = 'Name: ').grid(row = 1, column = 0)
+		tk.Label(frame, text = rf.findString('products_name_input_label')).grid(row = 1, column = 0)
 		self.name = tk.Entry(frame)
 		self.name.focus()
 		self.name.grid(row = 1, column = 1)
 
 		#Price input
-		tk.Label(frame, text = 'Price: ').grid(row = 2, column = 0)
+		tk.Label(frame, text = rf.findString('products_price_input_label')).grid(row = 2, column = 0)
 		self.price = tk.Entry(frame)
 		self.price.grid(row = 2, column = 1)
 
 		#Button add product
-		tk.Button(frame, text = 'Save product', command = self.add_product).grid(row = 3, columnspan = 2, sticky = tk.W + tk.E)
+		tk.Button(frame, text = rf.findString('products_add_product_button'), command = self.add_product)\
+		.grid(row = 3, columnspan = 2, sticky = tk.W + tk.E)
 
 		#Output messages
 		self.message = tk.Label(text = '', fg = 'red')
@@ -33,12 +43,15 @@ class Product(tk.Frame):
 		#Table
 		self.tree = tk.ttk.Treeview(height = 10, columns = 2)
 		self.tree.grid(row = 4, column = 0, columnspan = 2)
-		self.tree.heading('#0', text = 'Name', anchor = tk.CENTER)
-		self.tree.heading('#1', text = 'Price', anchor = tk.CENTER)
+		self.tree.heading('#0', text = rf.findString('products_table_heading0'), anchor = tk.CENTER)
+		self.tree.heading('#1', text = rf.findString('products_table_heading1'), anchor = tk.CENTER)
 
 		#Buttons
-		tk.Button(text = 'Delete', command = self.delete_product).grid(row = 5, column = 0, sticky = tk.W + tk.E)
-		tk.Button(text = 'Edit', command = self.edit_product).grid(row = 5, column = 1, sticky = tk.W + tk.E)
+		tk.Button(text = rf.findString('products_delete_button'), command = self.delete_product)\
+		.grid(row = 5, column = 0, sticky = tk.W + tk.E)
+
+		tk.Button(text = rf.findString('products_edit_button'), command = self.edit_product)\
+		.grid(row = 5, column = 1, sticky = tk.W + tk.E)
 
 		#Filling table
 		self.get_products()
