@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="products_window_title">Products Application</string>
+    <string name="products_frame_text">Register a new product</string>
+    <string name="products_name_input_label">Name: </string>
+    <string name="products_price_input_label">Price: </string> 
+    <string name="products_add_product_button">Save product</string> 
+    <string name="products_table_heading0">Name</string> 
+    <string name="products_table_heading1">Price</string>
+    <string name="products_delete_button">Delete</string> 
+    <string name="products_edit_button">Edit</string>  
+</resources>

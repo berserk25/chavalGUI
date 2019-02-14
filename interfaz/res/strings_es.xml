@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="products_window_title">Aplicación de productos</string>
+    <string name="products_frame_text">Registrar nuevo producto</string>
+    <string name="products_name_input_label">Nombre: </string>
+    <string name="products_price_input_label">Precio: </string> 
+    <string name="products_add_product_button">Guardar producto</string> 
+    <string name="products_table_heading0">Nombre</string> 
+    <string name="products_table_heading1">Precio</string>
+    <string name="products_delete_button">Eliminar</string> 
+    <string name="products_edit_button">Editar</string>  
+</resources>
